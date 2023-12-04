@@ -1,0 +1,25 @@
+/* Basic styling for the carousel container */
+.carousel-container {
+    display: flex;
+    overflow: hidden;
+    width: 300px; /* Adjust the width as needed */
+    border: 2px solid #ccc; /* Add a border to the container */
+    border-radius: 10px;
+}
+
+/* Rest of your existing CSS for the carousel */
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel img {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+
+/* Open the link in a new tab/window when an image is clicked */
+.carousel img:hover {
+    cursor: pointer;
+}
