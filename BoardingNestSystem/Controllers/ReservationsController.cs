@@ -60,9 +60,53 @@ namespace BoardingNestSystem.Controllers
                 _context.Add(reservation);
                 _context.Update(boardingHouse);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(IndexReservation));
             }
             return View(reservation);
+        }
+
+        // GET: RentInfos
+        public async Task<IActionResult> IndexReservation()
+     {
+         var appDBContext = _context.Reservations.Include(r => r.BoardingHouse);
+         return View(await appDBContext.ToListAsync());
+     }
+
+        // GET: Reservations/Delete/5
+        public async Task<IActionResult> DeleteReservation(Guid? id)
+        {
+            if (id == null || _context.Reservations == null)
+            {
+                return NotFound();
+            }
+
+            var reservation = await _context.Reservations
+                .FirstOrDefaultAsync(m => m.BoardingHouseID == id);
+            if (reservation == null)
+            {
+                return NotFound();
+            }
+
+            return View(reservation);
+        }
+
+        // POST: BoardingHouses/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteReservation(Guid id)
+        {
+            if (_context.Reservations == null)
+            {
+                return Problem("Entity set 'AppDBContext.BoardingHouses'  is null.");
+            }
+            var reservation = await _context.Reservations.FindAsync(id);
+            if (reservation != null)
+            {
+                _context.Reservations.Remove(reservation);
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(IndexReservation));
         }
     }
 }
