@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Reservations</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -56,11 +56,34 @@
                     @Html.DisplayFor(modelItem => item.IsFinished)
                 </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ReservationId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ReservationId">Details</a> |
+                @*<a asp-action="Edit" asp-route-id="@item.ReservationId">Edit</a> |*@
+                @*<a asp-action="Details" asp-route-id="@item.ReservationId">Details</a> |*@
                 <a asp-action="Delete" asp-route-id="@item.ReservationId">Delete</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+@*@foreach (var item in Model) {
+<div class="active tab-pane" id="activity">
+    <!-- Post -->
+
+        <!-- /.user-block -->
+        <p>
+            <h5>BoardingID:</h5>@Html.DisplayFor(modelItem => item.BoardingHouse.BoardingID)<br><br>
+            <h5>Client Name:</h5>@Html.DisplayFor(modelItem => item.ClientsName)<br><br>
+            <h5>Client's Contact Number:</h5>@Html.DisplayFor(modelItem => item.ClientsNumber)<br><br>
+            <h5>Date Check In:</h5>@Html.DisplayFor(modelItem => item.DateCheckIn)<br><br>
+            <h5>Date Check Out:</h5>@Html.DisplayFor(modelItem => item.DateCheckOut)<br><br>
+         <h5>Price:</h5>₱ @Html.DisplayFor(modelItem => item.BoardingHouse.Price)<br>
+        </p>
+
+        <a asp-action="Delete" asp-route-id="@item.ReservationId" class="btn btn-primary btn-block"><b>Cancel Book</b></a>
+    </div>
+    <!-- /.post -->
+
+
+
+</div>
+}*@

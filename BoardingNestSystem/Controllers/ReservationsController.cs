@@ -65,7 +65,7 @@ namespace BoardingNestSystem.Controllers
             return View(reservation);
         }
 
-        // GET: RentInfos
+        // GET: ReservationInfos
         public async Task<IActionResult> IndexReservation()
      {
          var appDBContext = _context.Reservations.Include(r => r.BoardingHouse);
@@ -73,7 +73,7 @@ namespace BoardingNestSystem.Controllers
      }
 
         // GET: Reservations/Delete/5
-        public async Task<IActionResult> DeleteReservation(Guid? id)
+        public async Task<IActionResult> Delete(Guid? id)
         {
             if (id == null || _context.Reservations == null)
             {
@@ -81,7 +81,8 @@ namespace BoardingNestSystem.Controllers
             }
 
             var reservation = await _context.Reservations
-                .FirstOrDefaultAsync(m => m.BoardingHouseID == id);
+                .Include(b => b.BoardingHouse)
+                .FirstOrDefaultAsync(m => m.ReservationId == id);
             if (reservation == null)
             {
                 return NotFound();
@@ -93,7 +94,7 @@ namespace BoardingNestSystem.Controllers
         // POST: BoardingHouses/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteReservation(Guid id)
+        public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
             if (_context.Reservations == null)
             {
@@ -107,6 +108,11 @@ namespace BoardingNestSystem.Controllers
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(IndexReservation));
+        }
+
+        private bool ReservationsExists(Guid id)
+        {
+            return (_context.Reservations?.Any(e => e.BoardingHouseID == id)).GetValueOrDefault();
         }
     }
 }
