@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Create";
 }
-
+@*
 <h1>Create</h1>
 
 <h4>BoardingHouse</h4>
@@ -44,7 +44,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="BedID" class="control-label"></label>
-                <select asp-for="BedID" class ="form-control" asp-items="ViewBag.BedID"></select>
+                <select asp-for="BedID" class="form-control" asp-items="ViewBag.BedID"></select>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
@@ -61,7 +61,107 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
+*@
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            
+            <!-- /.col -->
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-header p-2">
+                        <ul class="nav nav-pills">
+                            <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab"><b>Add New</b></a></li>
+
+                        </ul>
+                    </div><!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="active tab-pane" id="activity">
+                                <!-- Post -->
+                                <div class="tab-pane" id="settings">
+                                    <form asp-action="Create" class="form-horizontal">
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        <div class="form-group row">
+                                            <label asp-for="Name" class="control-label"></label>
+                                            <input asp-for="Name" class="form-control" />
+                                            <span asp-validation-for="Name" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label asp-for="Description" class="control-label"></label>
+                                            <input asp-for="Description" class="form-control" />
+                                            <span asp-validation-for="Description" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label asp-for="Address" class="control-label"></label>
+                                            <input asp-for="Address" class="form-control" />
+                                            <span asp-validation-for="Address" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label asp-for="Owner" class="control-label"></label>
+                                            <input asp-for="Owner" class="form-control" />
+                                            <span asp-validation-for="Owner" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label asp-for="OwnerNumber" class="control-label"></label>
+                                            <input asp-for="OwnerNumber" class="form-control" />
+                                            <span asp-validation-for="OwnerNumber" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label asp-for="Price" class="control-label"></label>
+                                            <input asp-for="Price" class="form-control" />
+                                            <span asp-validation-for="Price" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label asp-for="BedID" class="control-label"></label>
+                                            <select asp-for="BedID" class="form-control" asp-items="ViewBag.BedID"></select>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" asp-for="HasActiveReservation" /> @Html.DisplayNameFor(model => model.HasActiveReservation)
+                                            </label>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="offset-sm-2 col-sm-10">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="submit" value="Create" class="btn btn-primary" />
+                                        </div>
+                                        <div>
+                                            <a asp-action="Index">Back to List</a>
+                                        </div>
+
+                                        
+                                    </form>
+                                </div>
+                                @*<div class="form-group row">
+                                    <div class="offset-sm-0 col-sm-10">
+                                        <a href="C:\Users\ADMIN\Desktop\BWebsite-Moroscallo\HotelAdded.html" button type="submit" class="btn btn-danger">Add Hotel</button></a>
+                                    </div>
+                                </div>*@
+                               
+                            </div>
+
+
+
+                            <!-- /.tab-pane -->
+                        </div>
+                        <!-- /.tab-content -->
+                    </div><!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
