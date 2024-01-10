@@ -22,7 +22,7 @@ namespace BoardingNestSystem.Controllers
         // GET: BoardingHouses
         public async Task<IActionResult> Index()
         {
-            var appDBContext = _context.BoardingHouses.Include(b => b.Bed);
+            var appDBContext = _context.BoardingHouses.Where(bh => bh.HasActiveReservation == false);
             return View(await appDBContext.ToListAsync());
         }
 
