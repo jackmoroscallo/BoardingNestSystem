@@ -48,7 +48,7 @@ namespace BoardingNestSystem.Controllers
         // GET: BoardingHouses/Create
         public IActionResult Create()
         {
-            ViewData["BedID"] = new SelectList(_context.Beds, "BedID", "BedID");
+            ViewData["BedID"] = new SelectList(_context.Beds, "BedID", "BedNum");
             return View();
         }
 
@@ -66,7 +66,7 @@ namespace BoardingNestSystem.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BedID"] = new SelectList(_context.Beds, "BedID", "BedID", boardingHouse.BedID);
+            ViewData["BedID"] = new SelectList(_context.Beds, "BedID", "BedNum", boardingHouse.BedID);
             return View(boardingHouse);
         }
 
@@ -83,7 +83,7 @@ namespace BoardingNestSystem.Controllers
             {
                 return NotFound();
             }
-            ViewData["BedID"] = new SelectList(_context.Beds, "BedID", "BedID", boardingHouse.BedID);
+            ViewData["BedID"] = new SelectList(_context.Beds, "BedID", "BedNum", boardingHouse.BedID);
             return View(boardingHouse);
         }
 
@@ -119,7 +119,7 @@ namespace BoardingNestSystem.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BedID"] = new SelectList(_context.Beds, "BedID", "BedID", boardingHouse.BedID);
+            ViewData["BedID"] = new SelectList(_context.Beds, "BedID", "BedNum", boardingHouse.BedID);
             return View(boardingHouse);
         }
 
