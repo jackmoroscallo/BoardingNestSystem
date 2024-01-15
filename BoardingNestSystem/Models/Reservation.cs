@@ -13,6 +13,7 @@ namespace BoardingNestSystem.Models
         public DateTime DateCheckIn { get; set; }
         public DateTime DateCheckOut { get; set; }
         public bool IsFinished { get; set; }
+        public string Status { get; set; }
 
         [ValidateNever]
         public BoardingHouse BoardingHouse { get; set; }

@@ -4,6 +4,7 @@ using BoardingNestSystem.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BoardingNestSystem.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240115132348_AddedNewFieldForReservation")]
+    partial class AddedNewFieldForReservation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,7 +37,7 @@ namespace BoardingNestSystem.Migrations
 
                     b.HasKey("BedID");
 
-                    b.ToTable("Beds", (string)null);
+                    b.ToTable("Beds");
                 });
 
             modelBuilder.Entity("BoardingNestSystem.Models.BoardingHouse", b =>
@@ -77,7 +80,7 @@ namespace BoardingNestSystem.Migrations
 
                     b.HasIndex("BedID");
 
-                    b.ToTable("BoardingHouses", (string)null);
+                    b.ToTable("BoardingHouses");
                 });
 
             modelBuilder.Entity("BoardingNestSystem.Models.Reservation", b =>
@@ -114,7 +117,7 @@ namespace BoardingNestSystem.Migrations
 
                     b.HasIndex("BoardingHouseID");
 
-                    b.ToTable("Reservations", (string)null);
+                    b.ToTable("Reservations");
                 });
 
             modelBuilder.Entity("BoardingNestSystem.Models.BoardingHouse", b =>

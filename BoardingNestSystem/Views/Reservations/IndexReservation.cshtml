@@ -31,6 +31,9 @@
             @*<th>
                 @Html.DisplayNameFor(model => model.IsFinished)
             </th>*@
+            <th>
+                @*@Html.DisplayNameFor(model => model.Status)*@Status
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -55,6 +58,10 @@
                 @*<td>
                     @Html.DisplayFor(modelItem => item.IsFinished)
                 </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ReservationId">Edit</a> |
                 @*<a asp-action="Details" asp-route-id="@item.ReservationId">Details</a> |*@

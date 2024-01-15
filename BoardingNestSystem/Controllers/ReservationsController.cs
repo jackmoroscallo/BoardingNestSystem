@@ -137,7 +137,7 @@ namespace BoardingNestSystem.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("ReservationId,BoardingHouseID,ClientsName,ClientsNumber,DateCheckIn,DateCheckOut,IsFinished")] Reservation reservation)
+        public async Task<IActionResult> Edit(Guid id, [Bind("ReservationId,BoardingHouseID,ClientsName,ClientsNumber,DateCheckIn,DateCheckOut,IsFinished,Status")] Reservation reservation)
         {
             if (id != reservation.ReservationId)
             {
