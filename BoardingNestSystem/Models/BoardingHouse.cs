@@ -12,7 +12,7 @@ namespace BoardingNestSystem.Models
         public string Address { get; set; }
         public string Owner { get; set; }
         public string OwnerNumber { get; set; }
-        public string Price { get; set; }
+        public decimal Price { get; set; }
         public Guid BedID { get; set; }
         public bool HasActiveReservation { get; set; }
 

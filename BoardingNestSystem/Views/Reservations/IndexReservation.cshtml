@@ -34,6 +34,9 @@
             <th>
                 @*@Html.DisplayNameFor(model => model.Status)*@Status
             </th>
+            <th>
+                Calculated Price
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -60,6 +63,23 @@
                 </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.Status)
+                </td>
+
+                <td>
+                    @{
+                        decimal originalPrice = item.BoardingHouse.Price;
+                        DateTime dateCheckIn = item.DateCheckIn;
+                        DateTime dateCheckOut = item.DateCheckOut;
+
+                        // Calculate the rental duration in months
+                        int totalMonths = ((dateCheckOut.Year - dateCheckIn.Year) * 12) + dateCheckOut.Month - dateCheckIn.Month;
+
+                        decimal calculatedPrice = originalPrice * totalMonths;
+                    }
+
+
+                    <p>₱@calculatedPrice</p>
+
                 </td>
 
             <td>
